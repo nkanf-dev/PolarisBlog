@@ -1,54 +1,87 @@
-# React + TypeScript + Vite
+# Polaris Blog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+一个使用 React、TypeScript 和 Tailwind CSS 构建的简单博客应用。
 
-Currently, two official plugins are available:
+## 功能特性
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 简洁、响应式设计，基于 Tailwind CSS
+- GitHub Pages 部署集成
 
-## Expanding the ESLint configuration
+## 技术栈
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **前端框架:** React 19 与 TypeScript
+- **路由管理:** React Router v7
+- **样式设计:** Tailwind CSS v4
+- **构建工具:** Vite
+- **包管理器:** Bun
+- **代码检查:** Biome
+- **部署方式:** GitHub Actions 自动化部署到 GitHub Pages
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 开始使用
+
+### 前提条件
+
+- Bun
+
+### 安装步骤
+
+1. 克隆仓库:
+   ```bash
+   git clone https://github.com/nkanf-dev/PolarisBlog.git
+   cd PolarisBlog
+   ```
+
+2. 安装依赖:
+   ```bash
+   bun install
+   ```
+
+3. 启动开发服务器:
+   ```bash
+   bun run dev
+   ```
+
+4. 打开浏览器并访问 `http://localhost:5173/`
+
+## 项目结构
+
+- `/src` - 主要源代码
+  - `/components` - 可复用的 UI 组件
+  - `/pages` - 不同路由的页面组件
+  - `App.tsx` - 主应用组件
+  - `main.tsx` - 应用入口点
+- `/public` - 静态资源
+
+## 部署
+
+本项目已配置使用 GitHub Actions 自动部署到 GitHub Pages。
+
+### 手动部署
+
+要手动部署:
+
+```bash
+bun run deploy
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 自动部署
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+推送到 `main` 分支将触发 GitHub Actions 工作流，自动构建并部署站点到 GitHub Pages。
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## 贡献
+
+1. Fork 仓库
+2. 创建功能分支 (`git checkout -b feature/amazing-feature`)
+3. 提交更改 (`git commit -m '添加某个令人惊叹的功能'`)
+4. 推送到分支 (`git push origin feature/amazing-feature`)
+5. 开启 Pull Request
+
+## 许可证
+
+本项目采用 MIT 许可证 - 详情请参阅 LICENSE 文件。
+
+## 致谢
+
+- React 团队提供的出色框架
+- Tailwind CSS 提供的实用优先的 CSS 框架
+- Vite 提供的高速构建工具
