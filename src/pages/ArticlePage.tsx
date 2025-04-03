@@ -12,14 +12,14 @@ const ArticlePage: React.FC = () => {
       try {
         const response = await fetch(`/articles/${id}.md`)
         const text = await response.text();
-        if (!text.startsWith("<!doctype html>")) {
+        if (response.status == 200 && !text.startsWith("<!doctype html>")) {
           const html = await marked(text);
           setContent(html);
           setDate(new Date().toLocaleDateString());
         }
 
         else {
-          setContent("<h1>404 Not Found</h1>")
+          setContent(`error: ${response.status}`)
         }
       } catch (error) {
         console.error('Error fetching article:', error);
