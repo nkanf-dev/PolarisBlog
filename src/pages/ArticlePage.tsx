@@ -10,11 +10,17 @@ const ArticlePage: React.FC = () => {
   useEffect(() => {
     const fetchArticle = async () => {
       try {
-        const response = await fetch(`/articles/${id}.md`);
+        const response = await fetch(`/articles/${id}.md`)
         const text = await response.text();
-        const html = marked(text);
-        setContent(html);
-        setDate(new Date().toLocaleDateString());
+        if (!text.startsWith("<!doctype html>")) {
+          const html = await marked(text);
+          setContent(html);
+          setDate(new Date().toLocaleDateString());
+        }
+
+        else {
+          setContent("<h1>404 Not Found</h1>")
+        }
       } catch (error) {
         console.error('Error fetching article:', error);
       }
@@ -25,8 +31,8 @@ const ArticlePage: React.FC = () => {
 
   return (
     <div className="mt-5 bg-white p-5 rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Article</h2>
-      <div className="mb-4" dangerouslySetInnerHTML={{ __html: content }} />
+      <h2 className="text-2xl font-bold mb-4">{id}</h2>
+      <div className="prose mb-4" dangerouslySetInnerHTML={{ __html: content }} />
       <p className="text-gray-500 text-sm">{date}</p>
     </div>
   );
